@@ -1,0 +1,21 @@
+<html>
+
+<body>
+  <form action="/users" method="POST">
+    <input type="text" name="username" placeholder="username" />
+    <input type="text" name="email" placeholder="email" />
+    <input type="submit" />
+  </form>
+
+
+  <table>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+
+</html>
