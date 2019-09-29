@@ -1,18 +1,17 @@
 from controllers.controller import Controller
 from models.user import User
-
-import time
+from jinja2 import Template
 
 
 class UsersController(Controller):
-    def index(self):
+    def index(self) -> Template:
         users = User.get_all(self.ctx)
         return self.render({"users": users}, "users/index.html")
 
-    def create(self):
+    def create(self) -> Template:
         if self.ctx.params.get("username") and self.ctx.params.get("email"):
             u = User(self.ctx.params["username"], self.ctx.params["email"])
             User.insert(u, self.ctx)
 
-            users = User.get_all(self.ctx)
-            return self.render({"users": users}, "users/index.html")
+        users = User.get_all(self.ctx)
+        return self.render({"users": users}, "users/index.html")

@@ -6,7 +6,7 @@ class Router:
         self.ctx = ctx
         self.routes = routes
 
-    def call(self):
+    def call(self) -> tuple:
         for route in self.routes:
             uri, method, (klass, action) = route
             if uri == self.uri and method == self.method:
@@ -14,10 +14,9 @@ class Router:
         return (404, SystemController(self.ctx).not_found)
 
     @property
-    def uri(self):
+    def uri(self) -> str:
         return self.ctx.uri
 
     @property
-    def method(self):
+    def method(self) -> str:
         return self.ctx.method
-

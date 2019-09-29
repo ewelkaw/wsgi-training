@@ -5,7 +5,7 @@ class ViewsRegister:
     def __init__(self):
         self.storage = {}
 
-    def get(self, template_name):
+    def get(self, template_name: str) -> str:
         if template_name in self.storage:
             return self.storage[template_name]
 

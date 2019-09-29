@@ -6,7 +6,7 @@ class User(NamedTuple):
     email: str
 
     @classmethod
-    def get_all(cls, ctx):
+    def get_all(cls, ctx) -> list:
         return ctx.database.users
 
     @classmethod
