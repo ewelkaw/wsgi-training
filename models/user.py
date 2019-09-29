@@ -1,7 +1,9 @@
-class User:
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+from typing import NamedTuple
+
+
+class User(NamedTuple):
+    username: str
+    email: str
 
     @classmethod
     def get_all(cls, ctx):

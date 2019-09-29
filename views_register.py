@@ -13,6 +13,8 @@ class ViewsRegister:
             Path(__file__).parent.absolute().joinpath("views/", template_name)
         )
 
+        # not sure if it would work properly
+        # in threaded env
         with open(template_path) as f:
             template = f.read()
 

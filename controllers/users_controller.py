@@ -10,8 +10,9 @@ class UsersController(Controller):
         return self.render({"users": users}, "users/index.html")
 
     def create(self):
-        u = User(self.ctx.params["username"], self.ctx.params["email"])
-        User.insert(u, self.ctx)
+        if self.ctx.params.get("username") and self.ctx.params.get("email"):
+            u = User(self.ctx.params["username"], self.ctx.params["email"])
+            User.insert(u, self.ctx)
 
-        users = User.get_all(self.ctx)
-        return self.render({"users": users}, "users/index.html")
+            users = User.get_all(self.ctx)
+            return self.render({"users": users}, "users/index.html")
